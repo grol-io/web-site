@@ -2,5 +2,5 @@ theme: jekyll-theme-minimal
 title: GROL
 description: GROL is small scripting language written in go. It stands for Go REPL Open Language.
 logo: grol_logo.png
-show_downloads: true
-github.is_project_page: true
+show_downloads: false
+github.is_project_page: false
