@@ -1,1 +1,6 @@
-remote_theme: lewismiddleton/cayman-dark
+theme: jekyll-theme-minimal
+title: GROL
+description: GROL is small scripting language written in go. It stands for Go REPL Open Language.
+logo: grol_logo.png
+show_downloads: false
+github.is_project_page: false
