@@ -107,8 +107,8 @@ fact=func(n) { // function
     n*fact(n-1) // recursion
 }
 
-a=[fact(5), "abc", 76-3] // array
-m={"key": a, 73: 29} // so do maps
+a=[fact(5), "abc", 76-3] // heterogeneous array
+m={"str key": a, 42: "str val"} // maps also can have any key,value types
 </textarea>
 </div>
 <div>
