@@ -8,7 +8,7 @@ GROL Discord Bot makes GROL available on Discord
 
 This page is mostly for `go install grol.io/grol-discord-bot` and godoc to work.
 
-Details on [github.com/grol-io/grol-discord-bot](https://github.com/grol-io/grol-discord-bot#grol)
+Details on [github.com/grol-io/grol-discord-bot](https://github.com/grol-io/grol-discord-bot#grol-discord-bot)
 
 <p>
 Back to <a href="https://grol.io/">grol.io</a>
