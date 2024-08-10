@@ -7,3 +7,5 @@ See more on [github](https://github.com/grol-io/grol/). Or try the `wasm` versio
 (and we also have a [discord bot](https://github.com/grol-io/grol-discord-bot#grol-discord-bot)).
 
 {% include grol_wasm.html %}
+
+See releases to get the command line version with repl, history, edit of previous lines, etc...
