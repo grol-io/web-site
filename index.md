@@ -6,6 +6,6 @@ Initially loosely based on [Monkey](https://monkeylang.org/) from the Writing an
 See more on [github](https://github.com/grol-io/grol/). Or try the `wasm` version right below, type `info` for all the functions and keywords
 (and we also have a [discord bot](https://github.com/grol-io/grol-discord-bot#grol-discord-bot)).
 
-{% include grol_wasm.html %}
+See [releases](https://github.com/grol-io/grol/releases) to get the command line version with and interactive repl, history, edit of previous lines, etc...
 
-See releases to get the command line version with repl, history, edit of previous lines, etc...
+{% include grol_wasm.html %}
