@@ -8,4 +8,6 @@ See more on [github](https://github.com/grol-io/grol/). Or try the `wasm` versio
 
 See [releases](https://github.com/grol-io/grol/releases) to get the command line version with and interactive repl, history, edit of previous lines, etc...
 
+See the [butterfly](butterfly) demo of generating images from grol in wasm.
+
 {% include grol_wasm.html %}
