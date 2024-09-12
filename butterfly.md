@@ -10,7 +10,7 @@ func butterfly(xsize, ysize) {
 	imgName := "canvas"
 	canvas := image.new(imgName, xsize, ysize)
 	div := 6
-	now := time()
+	now := time.now()
 	t := 0
 	for t < 12*PI {
 		x := sin(t) * (pow(E, cos(t)) - 2*cos(4*t) - pow(sin(t/12), 5))
