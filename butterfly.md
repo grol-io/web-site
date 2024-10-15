@@ -3,8 +3,8 @@ Click run to generate an image, right here in your browser, in grol code
 {% include grol_wasm.html %}
 <script>
 document.getElementById('input').value = `func ycbcr(angle) {
-	angle = PI * angle / 180.
-	[190, 128 + 120*sin(angle), 128 + 120*cos(angle)]
+	a := PI * angle / 180.
+	[190, 128 + 120 * sin(a), 128 + 120 * cos(a)]
 }
 func butterfly(xsize, ysize) {
 	imgName := "canvas"
