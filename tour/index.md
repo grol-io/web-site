@@ -1,3 +1,8 @@
+---
+Title: A tour of Grol
+redirect_from:
+    - /Tour
+---
 ## A Tour of Grol
 
 Welcome to Grol! This guide provides a tour of the Grol language, covering its core features and syntax with examples.

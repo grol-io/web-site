@@ -4,3 +4,5 @@ description: GROL is small scripting language written in go. It stands for Go RE
 logo: grol_logo.png
 show_downloads: false
 github.is_project_page: false
+plugins:
+  - jekyll-redirect-from
