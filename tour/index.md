@@ -100,7 +100,7 @@ m3 = m + m2 // Merges maps
 
 Take any fragment from this page and try it by clicking "Run" below:
 
-{% include grol_wasm.html %}
+{% include /grol_wasm.html %}
 
 ### 3. Control Flow
 
