@@ -96,6 +96,12 @@ m2 = {"stable": true}
 m3 = m + m2 // Merges maps
 ```
 
+#### 2.6. Trying it
+
+Take any fragment from this page and try it by clicking "Run" below:
+
+{% include grol_wasm.html %}
+
 ### 3. Control Flow
 
 #### 3.1. Conditionals (`if`/`else`)
