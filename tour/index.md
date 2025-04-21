@@ -402,6 +402,7 @@ the list included by default (unless some are disabled like IOs for security)
 
 | String and misc functions | |
 |---------------------------|-|
+|`bytes`            | bytes(string) // returns an array of the utf8 bytes forming the string |
 |`int`              | int(any) |
 |`join`             | join(array, [string]) // joins an array of string with the optional separator |
 |`rand`             | rand([integer]) |
@@ -416,6 +417,7 @@ the list included by default (unless some are disabled like IOs for security)
 |`trim_left`        | trim_left(string, [string]) // trims leading spaces or characters |
 |`trim_right`       | trim_right(string, [string]) // trims trailing spaces or characters |
 |`type`             | type(any) |
+|`utf8`             | utf8(array, [boolean]) // returns a string from an array of bytes, optionally validating utf8 |
 |`width`            | width(string) |
 
 | I/Os | |
