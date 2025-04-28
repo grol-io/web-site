@@ -369,90 +369,93 @@ You can run them individually (`grol examples/fib.gr`) or together (`grol exampl
 It's easy to add more (for instance fortio adds `curl` and `fortio.load`, the discord bot messaging related, etc...) but here is
 the list included by default (unless some are disabled like IOs for security)
 
+
+| IO functions | |
+|--------------|-|
+| `eof` | eof() : returns true if a previous read hit the end of file for stdin
+| `exec` | exec(string, ..) : executes a command and returns its stdout, stderr and any error
+| `load` | load([string]) : filename (.gr)
+| `read` | read() : reads one line from stdin
+| `run` | run(string, ..) : runs a command interactively
+| `save` | save([string]) : filename (.gr)
+
+| Image functions | |
+|--------------|-|
+| `image.add` | image.add(string, string) : merges the 2nd image into the first one, additively with white clipping
+| `image.close_path` | image.close_path(string) : close the current path
+| `image.cube_to` | image.cube_to(string, float, float, float, float, float, float) : adds a cubic bezier segment
+| `image.draw` | image.draw(string, array) : draw the path in the color is an array of 3 or 4 elements 0-255
+| `image.draw_hsl` | image.draw_hsl(string, array) : draw vector path, color in an array [Hue (0-1), Sat (0-1), Light (0-1)]
+| `image.draw_ycbcr` | image.draw_ycbcr(string, array) : draw vector path, color Y'CbCr in an array of 3 elements 0-255
+| `image.line_to` | image.line_to(string, float, float) : adds a line segment
+| `image.move_to` | image.move_to(string, float, float) : starts a new path and moves the pen to coords
+| `image.new` | image.new(string, integer, integer) : create a new image of the name and size, image starts entirely transparent
+| `image.png` | image.png(string) : returns the png data of the named image, suitable for base64
+| `image.quad_to` | image.quad_to(string, float, float, float, float) : adds a quadratic bezier segment
+| `image.save` | image.save(string) : save the named image grol.png
+| `image.set` | image.set(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color is an array of 3 or 4 elements 0-255
+| `image.set_hsl` | image.set_hsl(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color in an array [Hue (0-1), Sat (0-1), Light (0-1)]
+| `image.set_ycbcr` | image.set_ycbcr(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color Y'CbCr in an array of 3 elements 0-255
+
+| Introspection functions | |
+|--------------|-|
+| `defun` | defun(string, array, array) : defines a function from name (empty for lambda), arguments, statements (as returned by first/rest)
+| `eval` | eval(string) : evaluates a string as grol code
+| `format` | format(func) : returns a string, pretty printed function object
+| `json` | json(any) : converts an object to a JSON string
+| `json_go` | json_go(any, [string]) : optional indent e.g json_go(m, "  ")
+| `type` | type(any) : returns the type of an object as a string
+| `unjson` | unjson(string) : evaluates a JSON string as grol code
+
 | Math functions | |
-|----------------|-|
-|`acos`             | acos(float) |
-|`asin`             | asin(float) |
-|`atan`             | atan(float) |
-|`atan2`            | atan2(float, float) |
-|`ceil`             | ceil(float) |
-|`cos`              | cos(float) |
-|`exp`              | exp(float) |
-|`floor`            | floor(float) |
-|`ln`               | ln(float) |
-|`log10`            | log10(float) |
-|`max`              | max(any, ..) |
-|`min`              | min(any, ..) |
-|`pow`              | pow(float, float) |
-|`round`            | round(float) |
-|`sin`              | sin(float) |
-|`sqrt`             | sqrt(float) |
-|`tan`              | tan(float) |
-|`trunc`            | trunc(float) |
+|--------------|-|
+| `acos` | acos(float) : returns the arccosine of x in radians
+| `asin` | asin(float) : returns the arcsine of x in radians
+| `atan` | atan(float) : returns the arctangent of x in radians
+| `atan2` | atan2(float, float) : returns the arctangent of y/x in radians
+| `ceil` | ceil(float) : returns the least integer value greater than or equal to x
+| `cos` | cos(float) : returns the cosine of x in radians
+| `exp` | exp(float) : returns e raised to the power of x
+| `floor` | floor(float) : returns the greatest integer value less than or equal to x
+| `int` | int(any) : converts a value to an integer
+| `ln` | ln(float) : returns the natural logarithm of x
+| `log10` | log10(float) : returns the base-10 logarithm of x
+| `max` | max(any, ..) : returns the maximum value among the arguments
+| `min` | min(any, ..) : returns the minimum value among the arguments
+| `pow` | pow(float, float) : returns base raised to the power of exp
+| `rand` | rand([integer]) : returns a random number between 0 and 1, or between 0 and n-1 if n is provided
+| `round` | round(float) : returns the nearest integer to x
+| `shuffle` | shuffle(array) : randomly reorders elements in an array
+| `sin` | sin(float) : returns the sine of x in radians
+| `sort` | sort(array) : sorts an array
+| `sqrt` | sqrt(float) : returns the square root of x
+| `tan` | tan(float) : returns the tangent of x in radians
+| `trunc` | trunc(float) : returns the integer value of x
 
-|Introspection functions | |
-|------------------------|-|
-|`defun`            | defun(string, array, array) // defines a function from name (empty for lambda), arguments, statements (as returned by first/rest) |
-|`eval`             | eval(string) |
-|`format`           | format(func) // returns a string, pretty printed function object |
-|`json`             | json(any) |
-|`json_go`          | json_go(any, [string]) // optional indent e.g json_go(m, "  ") |
-|`unjson`           | unjson(string) |
-|`base64`           | base64(any) |
-
-| String and misc functions | |
-|---------------------------|-|
-|`bytes`            | bytes(string) // returns an array of the utf8 bytes forming the string |
-|`int`              | int(any) |
-|`join`             | join(array, [string]) // joins an array of string with the optional separator |
-|`rand`             | rand([integer]) |
-|`regexp`           | regexp(string, string, [boolean]) // returns true if regular expression matches the string (2nd arg) |
-|`regsub`           | regsub(string, string, [string]) // regexp, input, subst |
-|`rune_len`         | rune_len(string) |
-|`runes`            | runes(string, [boolean]) // optionally as array of integers |
-|`sleep`            | sleep(float) // in seconds |
-|`split`            | split(string, [string]) // optional separator |
-|`sprintf`          | sprintf(string, ..) |
-|`trim`             | trim(string, [string]) // trims leading and trailing spaces or characters |
-|`trim_left`        | trim_left(string, [string]) // trims leading spaces or characters |
-|`trim_right`       | trim_right(string, [string]) // trims trailing spaces or characters |
-|`type`             | type(any) |
-|`utf8`             | utf8(array, [boolean]) // returns a string from an array of bytes, optionally validating utf8 |
-|`width`            | width(string) |
-
-| I/Os | |
-|------|-|
-|`eof`              | eof() // Returns true if a previous read hit the end of file for stdin |
-|`exec`             | exec(string, ..) // executes a command and returns its stdout, stderr and any error |
-|`load`             | load([string]) // filename (.gr) |
-|`read`             | read() // Reads one line from stdin |
-|`run`              | run(string, ..) // runs a command interactively |
-|`save`             | save([string]) // filename (.gr) |
-
-| Image functions |-|
-|-----------------|-|
-|`image.add`        | image.add(string, string) // merges the 2nd image into the first one, additively with white clipping |
-|`image.close_path` | image.close_path(string) // close the current path |
-|`image.cube_to`    | image.cube_to(string, float, float, float, float, float, float) // adds a cubic bezier segment |
-|`image.draw`       | image.draw(string, array) // draw the path in the color is an array of 3 or 4 elements 0-255 |
-|`image.draw_hsl`   | image.draw_hsl(string, array) // draw vector path, color in an array [Hue (0-1), Sat (0-1), Light (0-1)] |
-|`image.draw_ycbcr` | image.draw_ycbcr(string, array) // draw vector path, color Y'CbCr in an array of 3 elements 0-255 |
-|`image.line_to`    | image.line_to(string, float, float) // adds a line segment |
-|`image.move_to`    | image.move_to(string, float, float) // starts a new path and moves the pen to coords |
-|`image.new`        | image.new(string, integer, integer) // create a new image of the name and size, image starts entirely transparent |
-|`image.png`        | image.png(string) // returns the png data of the named image, suitable for base64 |
-|`image.quad_to`    | image.quad_to(string, float, float, float, float) // adds a quadratic bezier segment |
-|`image.save`       | image.save(string) // save the named image grol.png |
-|`image.set`        | image.set(string, integer, integer, array) // img, x, y, color: set a pixel in the named image, color is an array of 3 or 4 elements 0-255 |
-|`image.set_hsl`    | image.set_hsl(string, integer, integer, array) // img, x, y, color: set a pixel in the named image, color in an array [Hue (0-1), Sat (0-1), Light (0-1)] |
-|`image.set_ycbcr`  | image.set_ycbcr(string, integer, integer, array) // img, x, y, color: set a pixel in the named image, color Y'CbCr in an array of 3 elements 0-255 |
+| String functions | |
+|--------------|-|
+| `base64` | base64(any) : encodes a string to base64
+| `bytes` | bytes(string) : returns an array of the utf8 bytes forming the string
+| `join` | join(array, [string]) : joins an array of string with the optional separator
+| `regexp` | regexp(string, string, [boolean]) : returns true if regular expression (first arg) matches the string (2nd arg), optionally returns an array of matches
+| `regsub` | regsub(string, string, [string]) : regexp, input, subst
+| `rune_len` | rune_len(string) : returns the number of runes in a string
+| `runes` | runes(string, [boolean]) : optionally as array of integers
+| `split` | split(string, [string]) : optional separator
+| `sprintf` | sprintf(string, ..) : formats a string using the given format and arguments
+| `trim` | trim(string, [string]) : trims leading and trailing spaces or characters
+| `trim_left` | trim_left(string, [string]) : trims leading spaces or characters
+| `trim_right` | trim_right(string, [string]) : trims trailing spaces or characters
+| `utf8` | utf8(array, [boolean]) : returns a string from an array of bytes, optionally validating utf8
+| `width` | width(string) : returns the display width of a string (accounting for full-width characters)
 
 | Time functions | |
-|----------------|-|
-|`time.info`        | time.info(float, [string]) // Float as returned by time.now() and time.parse() in seconds since epoch, and optional TimeZone/location |
-|`time.now`         | time.now() // Date/time in seconds since epoch |
-|`time.parse`       | time.parse(string, [string]) // Parse a time string with optional format, returns seconds since epoch |
+|--------------|-|
+| `sleep` | sleep(float) : sleeps for the specified number of seconds
+| `time.info` | time.info(float, [string]) : returns detailed information about a time value in seconds since epoch
+| `time.now` | time.now() : returns the current time in seconds since epoch
+| `time.parse` | time.parse(string, [string]) : parses a time string and returns seconds since epoch
 
-Produced by [examples/functions_list.gr](https://github.com/grol-io/grol/tree/main/examples/functions_list.gr)
+The above tables are automatically produced by [examples/functions_list.gr](https://github.com/grol-io/grol/tree/main/examples/functions_list.gr)
 
 This concludes the basic tour of Grol. Explore the examples and the `info` object in the REPL to learn more!
