@@ -398,7 +398,7 @@ the list included by default (unless some are disabled like IOs for security)
 | `image.set_hsl` | image.set_hsl(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color in an array [Hue (0-1), Sat (0-1), Light (0-1)]
 | `image.set_ycbcr` | image.set_ycbcr(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color Y'CbCr in an array of 3 elements 0-255
 | `image.text` | image.text(string, float, float, float, string, arg6..arg7) : draw text on the image at x,y with size, optional color array [R,G,B] or [R,G,B,A], and optional font variant (regular, bold, italic)
-| `image.text_size` | image.text_size(string, float, [string]) : returns width and height for the given text with size and optional font variant (regular, bold, italic)
+| `image.text_size` | image.text_size(string, float, [string]) : returns width, height and horizontal offset and descent for the given text with size and optional font variant (regular, bold, italic)
 
 | Introspection functions | |
 |--------------|-|
