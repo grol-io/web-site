@@ -369,7 +369,6 @@ You can run them individually (`grol examples/fib.gr`) or together (`grol exampl
 It's easy to add more (for instance fortio adds `curl` and `fortio.load`, the discord bot messaging related, etc...) but here is
 the list included by default (unless some are disabled like IOs for security)
 
-
 | IO functions | |
 |--------------|-|
 | `eof` | eof() : returns true if a previous read hit the end of file for stdin
@@ -385,6 +384,7 @@ the list included by default (unless some are disabled like IOs for security)
 | `image.add` | image.add(string, string) : merges the 2nd image into the first one, additively with white clipping
 | `image.close_path` | image.close_path(string) : close the current path
 | `image.cube_to` | image.cube_to(string, float, float, float, float, float, float) : adds a cubic bezier segment
+| `image.delete` | image.delete(string) : deletes the named image
 | `image.draw` | image.draw(string, array) : draw the path in the color is an array of 3 or 4 elements 0-255
 | `image.draw_hsl` | image.draw_hsl(string, array) : draw vector path, color in an array [Hue (0-1), Sat (0-1), Light (0-1)]
 | `image.draw_ycbcr` | image.draw_ycbcr(string, array) : draw vector path, color Y'CbCr in an array of 3 elements 0-255
@@ -397,6 +397,7 @@ the list included by default (unless some are disabled like IOs for security)
 | `image.set` | image.set(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color is an array of 3 or 4 elements 0-255
 | `image.set_hsl` | image.set_hsl(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color in an array [Hue (0-1), Sat (0-1), Light (0-1)]
 | `image.set_ycbcr` | image.set_ycbcr(string, integer, integer, array) : img, x, y, color: set a pixel in the named image, color Y'CbCr in an array of 3 elements 0-255
+| `image.size` | image.size(string) : returns a map of image info (also checks for existence, returns nil if not found)
 | `image.text` | image.text(string, float, float, float, string, arg6..arg7) : draw text on the image at x,y with size, optional color array [R,G,B] or [R,G,B,A], and optional font variant (regular, bold, italic)
 | `image.text_size` | image.text_size(string, float, [string]) : returns width, height and horizontal offset and descent for the given text with size and optional font variant (regular, bold, italic)
 
