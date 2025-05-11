@@ -333,14 +333,14 @@ You can gracefully handle potential errors using the `catch()` function. It eval
 
 ```go
 // Catching an error
-result1 = catch("1 + not_a_variable")
+result1 = catch(1 + not_a_variable)
 println(result1)
 // Output: {"err":true,"value":"identifier not found: not_a_variable"}
 println(result1.err)   // -> true
 println(result1.value) // -> "identifier not found: not_a_variable"
 
 // Successful execution
-result2 = catch("1 + 2")
+result2 = catch(1 + 2)
 println(result2)
 // Output: {"err":false,"value":3}
 println(result2.err)   // -> false
