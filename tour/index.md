@@ -375,9 +375,10 @@ the list included by default (unless some are disabled like IOs for security)
 | `exec` | exec(string, ..) : executes a command and returns its stdout, stderr and any error
 | `flush` | flush() : flushes output and disable caching/memoization
 | `load` | load([string]) : filename (.gr)
-| `read` | read() : reads one line from stdin
+| `read` | read([integer, [boolean]]) : reads one line from stdin or just n characters if a number is provided, non blocking if boolean is true
 | `run` | run(string, ..) : runs a command interactively
 | `save` | save([string]) : filename (.gr)
+| `term.size` | term.size() : Returns the size of the terminal
 
 | Image functions | |
 |--------------|-|
