@@ -59,7 +59,7 @@ y = 20
 
 #### 2.3. Data Types & Variables
 
-* **Numbers:** Integers and Floats. Basic arithmetic operators (`+`, `-`, `*`, `/`) work as expected.
+* **Numbers:** Integers and Floats. Basic arithmetic operators (`+`, `-`, `*`, `/`) work as expected as well as bit operators (or `|`, and `&` and xor `^`) and the compound versions (e.g. `+=` ...).
 * **Booleans:** `true` and `false`. Comparison operators (`<=`, `>=`, `==`, `!=`, `>`, `<`) are available.
 * **Strings:** Defined with double quotes (`"`). Concatenated with `+`. String indexing accesses bytes, while iteration accesses runes.
 * **Assignment:** Use the `=` operator. The `let` keyword is optional.
