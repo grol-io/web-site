@@ -457,9 +457,9 @@ the list included by default (unless some are disabled like IOs for security)
 | Time functions | |
 |--------------|-|
 | `sleep` | sleep(float) : sleeps for the specified number of seconds
-| `time.info` | time.info(float, [string]) : returns detailed information about a time value in seconds since epoch
+| `time.info` | time.info(float, [string]) : returns detailed information about a time value in seconds since epoch (in optional tz)
 | `time.now` | time.now() : returns the current time in seconds since epoch
-| `time.parse` | time.parse(string, [string]) : parses a time string and returns seconds since epoch
+| `time.parse` | time.parse(string, [string]) : parses a time string (using optional format) and returns seconds since epoch
 
 The above tables are automatically produced by [examples/functions_list.gr](https://github.com/grol-io/grol/tree/main/examples/functions_list.gr)
 
