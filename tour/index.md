@@ -443,7 +443,7 @@ the list included by default (unless some are disabled like IOs for security)
 | `bytes` | bytes(string) : returns an array of the utf8 bytes forming the string
 | `join` | join(array, [string]) : joins an array of string with the optional separator
 | `regexp` | regexp(string, string, [boolean]) : returns true if regular expression (first arg) matches the string (2nd arg), optionally returns an array of matches
-| `regsub` | regsub(string, string, [string]) : regexp, input, subst
+| `regsub` | regsub(string, string, string) : regexp, input, subst
 | `rune_len` | rune_len(string) : returns the number of runes in a string
 | `runes` | runes(string, [boolean]) : optionally as array of integers
 | `split` | split(string, [string]) : optional separator
