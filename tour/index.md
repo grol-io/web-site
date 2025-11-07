@@ -421,6 +421,7 @@ the list included by default (unless some are disabled like IOs for security)
 | `ceil` | ceil(float) : returns the least integer value greater than or equal to x
 | `cos` | cos(float) : returns the cosine of x in radians
 | `exp` | exp(float) : returns e raised to the power of x
+| `float` | float(any) : converts a value to a float
 | `floor` | floor(float) : returns the greatest integer value less than or equal to x
 | `int` | int(any) : converts a value to an integer
 | `ln` | ln(float) : returns the natural logarithm of x
