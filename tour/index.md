@@ -147,6 +147,14 @@ Grol provides several `for` loop forms:
   ```
   Note that `-3:7` generates the following array even outside of for context: `[-3,-2,-1,0,1,2,3,4,5,6]`
 
+* **3 part integer range:**
+
+Using `:` separated start, end, increment - end is exclusive
+
+  ```go
+  for i = 25:0:-5 { println(i) } // Prints 25,20,15,10,5 (inclusive start, exclusive end)
+  ```
+
 * **Iterable Loop (Arrays, Maps, Strings):**
   ```go
   // Array
