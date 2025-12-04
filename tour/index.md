@@ -62,7 +62,7 @@ y = 20
 * **Numbers:** Integers and Floats. Basic arithmetic operators (`+`, `-`, `*`, `/`) work as expected as well as bit operators (or `|`, and `&` and xor `^`) and the compound versions (e.g. `+=` ...).
 * **Booleans:** `true` and `false`. Comparison operators (`<=`, `>=`, `==`, `!=`, `>`, `<`) are available.
 * **Strings:** Defined with double quotes (`"`). Concatenated with `+`. String indexing accesses bytes, while iteration accesses runes.
-* **Assignment:** Use the `=` operator. The `let` keyword is optional.
+* **Assignment:** Use the `=` operator. `:` is mostly optional, as in `x := y` forces x to be bound to a copy of y.
 
 Note that `*` `+` etc work on strings, arrays and maps to replicate values or concatenate/append/merge respectively.
 
