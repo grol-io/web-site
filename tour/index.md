@@ -59,7 +59,7 @@ y = 20
 
 #### 2.3. Data Types & Variables
 
-* **Numbers:** Integers and Floats. Basic arithmetic operators (`+`, `-`, `*`, `/`) work as expected as well as bit operators (or `|`, and `&` and xor `^`) and the compound versions (e.g. `+=` ...).
+* **Numbers:** Integers, Floats, and BigInts (arbitrary precision). Basic arithmetic operators (`+`, `-`, `*`, `/`) work as expected as well as bit operators (or `|`, and `&` and xor `^`) and the compound versions (e.g. `+=` ...). Integer literals that overflow `int64` are automatically parsed as BigInts, and integer arithmetic that overflows is automatically promoted to BigInt.
 * **Booleans:** `true` and `false`. Comparison operators (`<=`, `>=`, `==`, `!=`, `>`, `<`) are available.
 * **Strings:** Defined with double quotes (`"`). Concatenated with `+`. String indexing accesses bytes, while iteration accesses runes.
 * **Assignment:** Use the `=` operator. `:` is mostly optional, as in `x := y` forces x to be bound to a copy of y.
@@ -69,6 +69,7 @@ Note that `*` `+` etc work on strings, arrays and maps to replicate values or co
 ```go
 n = 720            // Integer
 pi_approx = 3.14   // Float
+big_number = 99999999999999999999 // BigInt (automatically, since it exceeds int64)
 is_active = true   // Boolean
 message = "Hello" + " " + "Grol" // String concatenation
 greeting = "Hello"
@@ -280,7 +281,7 @@ println(info.gofuncs)    // List built-in Go functions
 println(info["tokens"])  // Another way to access info map
 ```
 
-Common built-ins include `print`, `println`, `log`, `len`, `first`, `rest`, `str`, `int`, math functions (`sqrt`, `sin`, `cos`, etc.), `time.now()`, `json`/`unjson`, image manipulation functions (`image.*`), and more. See the Appendix for a more complete list generated from the interpreter itself.
+Common built-ins include `print`, `println`, `log`, `len`, `first`, `rest`, `str`, `int`, `big`, math functions (`sqrt`, `sin`, `cos`, etc.), `time.now()`, `json`/`unjson`, image manipulation functions (`image.*`), and more. See the Appendix for a more complete list generated from the interpreter itself.
 
 ### 6. Macros
 
@@ -316,7 +317,45 @@ unless(10 > 5, println("Condition is false"), println("Condition is true"))
 * **Formatting:** `grol -format your_script.gr` reformats code.
 * **Image Library:** Built-in functions for creating and manipulating images (`image.*`).
 
-#### 8.1 Error Handling
+#### 8.1 BigInt (Arbitrary Precision Integers)
+
+Grol supports arbitrary precision integers via the `BIGINT` type. Integer literals that exceed the `int64` range are automatically parsed as BigInts. Additionally, any integer arithmetic operation (`+`, `-`, `*`, `/`, `<<`) that would overflow `int64` is automatically promoted to BigInt. You can also explicitly create a BigInt using the `big()` function.
+
+```go
+// Automatic: literals larger than int64 become BigInt
+a = 99999999999999999999
+type(a)     // -> "BIGINT"
+a + 1       // -> 100000000000000000000
+a * a       // -> 9999999999999999999800000000000000000001
+
+// Overflow auto-promotion: int64 arithmetic that overflows becomes BigInt
+9223372036854775807 + 1   // -> 9223372036854775808 (BigInt)
+(1 << 62) * 10            // -> 46116860184273879040 (BigInt)
+1 << 63                   // -> 9223372036854775808 (BigInt)
+
+// Explicit conversion with big()
+b = big(42)
+type(b)     // -> "BIGINT"
+big("123456789012345678901234567890") // from string
+
+// Arithmetic with mixed types: Integer is promoted to BigInt
+a + 1       // BigInt + Integer -> BigInt
+big(6) * 7  // -> 42 (normalized back to INTEGER since it fits)
+
+// BigInt + Float -> Float
+big(42) + 0.5 // -> 42.5
+
+// Large shifts
+big(1) << 128 // -> 340282366920938463463374607431768211456
+
+// Conversions
+int(big(42))   // -> 42 (back to int64, errors if too large)
+float(big(42)) // -> 42.0
+```
+
+**Normalization:** When a BigInt arithmetic result fits in an `int64`, it is automatically converted back to a regular `INTEGER`. This means `big(10) + big(20)` returns `30` with type `INTEGER`.
+
+#### 8.2 Error Handling
 
 Grol reports runtime errors with a message and, if applicable, a stack trace.
 
@@ -426,6 +465,7 @@ the list included by default (unless some are disabled like IOs for security)
 | `asin` | asin(float) : returns the arcsine of x in radians
 | `atan` | atan(float) : returns the arctangent of x in radians
 | `atan2` | atan2(float, float) : returns the arctangent of y/x in radians
+| `big` | big(any) : converts a value to an arbitrary precision integer (bigint)
 | `ceil` | ceil(float) : returns the least integer value greater than or equal to x
 | `cos` | cos(float) : returns the cosine of x in radians
 | `exp` | exp(float) : returns e raised to the power of x
