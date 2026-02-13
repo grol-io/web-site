@@ -355,6 +355,15 @@ float(big(42)) // -> 42.0
 
 **Normalization:** When a BigInt arithmetic result fits in an `int64`, it is automatically converted back to a regular `INTEGER`. This means `big(10) + big(20)` returns `30` with type `INTEGER`.
 
+**Example – Fibonacci with BigInt:** Thanks to automatic memoization and overflow promotion, `fib(100)` returns instantly with the correct arbitrary-precision result:
+
+```go
+func fib(n) { if n <= 1 { n } else { fib(n - 1) + fib(n - 2) } }
+fib(100) // -> 354224848179261915075
+```
+
+Without memoization, recursive Fibonacci becomes impractical past ~`fib(40)`. Grol's auto-memoization makes this instantaneous, and the result automatically promotes to BigInt when it overflows `int64` (after fib(92)).
+
 #### 8.2 Error Handling
 
 Grol reports runtime errors with a message and, if applicable, a stack trace.
